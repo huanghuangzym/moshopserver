@@ -1,0 +1,13 @@
+*.pid
+*.lock
+*.log
+
+moshopserver
+
+bin
+
+/.project
+/.pydevproject
+/.settings/org.eclipse.core.resources.prefs
+
+.idea/

@@ -89,7 +89,7 @@ func (this *CartController) Cart_Add() {
 	goodstable := new(models.NideshopGoods)
 	var goods models.NideshopGoods
 	err := o.QueryTable(goodstable).Filter("id", intgoodsId).One(&goods)
-	if err == orm.ErrNoRows || goods.IsDelete {
+	if err == orm.ErrNoRows || goods.IsDelete == 1 {
 		this.CustomAbort(400, "商品已下架")
 	}
 
