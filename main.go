@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	_ "github.com/harlanc/moshopserver/models"
-	_ "github.com/harlanc/moshopserver/routers"
-	"github.com/harlanc/moshopserver/services"
-	_ "github.com/harlanc/moshopserver/utils"
+	_ "github.com/huanghuangzym/moshopserver/models"
+	_ "github.com/huanghuangzym/moshopserver/routers"
+	"github.com/huanghuangzym/moshopserver/services"
+	_ "github.com/huanghuangzym/moshopserver/utils"
 )
 
 func main() {

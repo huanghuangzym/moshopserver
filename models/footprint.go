@@ -2,7 +2,7 @@ package models
 
 import (
 	"github.com/astaxie/beego/orm"
-	"github.com/harlanc/moshopserver/utils"
+	"github.com/huanghuangzym/moshopserver/utils"
 )
 
 func AddFootprint(userId, goodsId int) {

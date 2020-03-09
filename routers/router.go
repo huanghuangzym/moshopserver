@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/harlanc/moshopserver/controllers"
+	"github.com/huanghuangzym/moshopserver/controllers"
 )
 
 func init() {

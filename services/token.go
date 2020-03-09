@@ -8,7 +8,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
 	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/harlanc/moshopserver/utils"
+	"github.com/huanghuangzym/moshopserver/utils"
 )
 
 var key = []byte("adfadf!@#2")
