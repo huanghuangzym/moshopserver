@@ -15,8 +15,8 @@ all: manager
 manager: generate fmt vet
 	go build -ldflags "-X main.build=`git rev-parse HEAD`" main.go
 
-build: fmt vet
-	CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"'  -o bin/mshop main.go
+build: fmt  vet
+	CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"'  -o mshop main.go
 
 # Run against the configured Kubernetes cluster in ~/.kube/config
 

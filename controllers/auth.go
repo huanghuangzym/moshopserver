@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -32,6 +33,7 @@ func (this *AuthController) Auth_LoginByWeixin() {
 	if userInfo == nil {
 
 	}
+	fmt.Printf("Auth_LoginByWeixin  get userinfo %v \n", userInfo)
 
 	o := orm.NewOrm()
 

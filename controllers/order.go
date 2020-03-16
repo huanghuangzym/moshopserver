@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/huanghuangzym/moshopserver/models"
@@ -131,24 +132,26 @@ func (this *OrderController) Order_Detail() {
 }
 
 func (this *OrderController) Order_Submit() {
-	addressId := this.GetString("addressId")
+	//addressId := this.GetString("addressId")
 	//couponId := this.GetString("couponId")
 	postscript := this.GetString("postscript")
-	intaddressId := utils.String2Int(addressId)
+	//intaddressId := utils.String2Int(addressId)
 	//intcouponId := utils.String2Int(couponId)
 
 	o := orm.NewOrm()
-	addresstable := new(models.NideshopAddress)
-	var address models.NideshopAddress
+	/*
+		addresstable := new(models.NideshopAddress)
+		var address models.NideshopAddress
 
-	err := o.QueryTable(addresstable).Filter("id", intaddressId).One(&address)
-	if err == orm.ErrNoRows {
-		this.Abort("请选择收获地址")
-	}
+		err := o.QueryTable(addresstable).Filter("id", intaddressId).One(&address)
+		if err == orm.ErrNoRows {
+			this.Abort("请选择收获地址")
+		}
+	*/
 
 	carttable := new(models.NideshopCart)
 	var carts []models.NideshopCart
-	_, err = o.QueryTable(carttable).Filter("user_id", getLoginUserId()).Filter("session_id", 1).Filter("checked", 1).All(&carts)
+	_, err := o.QueryTable(carttable).Filter("user_id", getLoginUserId()).Filter("session_id", 1).Filter("checked", 1).All(&carts)
 	if err == orm.ErrNoRows {
 		this.Abort("请选择商品")
 	}
@@ -168,12 +171,12 @@ func (this *OrderController) Order_Submit() {
 	orderinfo := models.NideshopOrder{
 		OrderSn:      models.GenerateOrderNumber(),
 		UserId:       getLoginUserId(),
-		Consignee:    address.Name,
-		Mobile:       address.Mobile,
-		Province:     address.ProvinceId,
-		City:         address.CityId,
-		District:     address.DistrictId,
-		Address:      address.Address,
+		Consignee:    "jia",
+		Mobile:       "123",
+		Province:     1,
+		City:         1,
+		District:     1,
+		Address:      "1",
 		FreightPrice: 0,
 		Postscript:   postscript,
 		CouponId:     0,
@@ -186,6 +189,7 @@ func (this *OrderController) Order_Submit() {
 
 	orderid, err := o.Insert(&orderinfo)
 	if err != nil {
+		fmt.Printf("insert order failed %v", err)
 		this.Abort("订单提交失败")
 	}
 	orderinfo.Id = int(orderid)

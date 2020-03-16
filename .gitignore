@@ -1,8 +1,10 @@
 *.pid
 *.lock
 *.log
+.gitignore
 
 moshopserver
+mshop
 
 bin
 

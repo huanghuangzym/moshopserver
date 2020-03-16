@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/huanghuangzym/moshopserver/services"
 	"github.com/huanghuangzym/moshopserver/utils"
 )
@@ -31,6 +32,7 @@ import (
 // }
 
 func getLoginUserId() int {
+	fmt.Printf("get service loguserid %s \n", services.LoginUserId)
 	intuserId := utils.String2Int(services.LoginUserId)
 	return intuserId
 }

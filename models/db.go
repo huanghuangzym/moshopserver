@@ -203,7 +203,7 @@ type NideshopGoods struct {
 	GoodsUnit         string `json:"goods_unit"`
 	Id                int    `json:"id"`
 	IsAppExclusive    int    `json:"is_app_exclusive"`
-	IsDelete          int   `json:"is_delete"`
+	IsDelete          int    `json:"is_delete"`
 	IsHot             int    `json:"is_hot"`
 	IsLimited         int    `json:"is_limited"`
 	IsNew             int    `json:"is_new"`
@@ -266,7 +266,6 @@ type NideshopOrder struct {
 	ActualPrice    float64 `json:"actual_price"`
 	AddTime        int64   `json:"add_time"`
 	Address        string  `json:"address"`
-	CallbackStatus string  `json:"callback_status"`
 	City           int     `json:"city"`
 	ConfirmTime    int     `json:"confirm_time"`
 	Consignee      string  `json:"consignee"`
@@ -434,7 +433,6 @@ func init() {
 
 	// set default database
 	_ = orm.RegisterDataBase("default", "mysql", "root:123456@tcp(127.0.0.1:3306)/nideshop?charset=utf8mb4", 30)
-
 
 	// register model
 	orm.RegisterModel(new(NideshopAd))

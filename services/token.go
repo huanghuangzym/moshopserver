@@ -27,6 +27,7 @@ func GetUserID(tokenstr string) string {
 		return ""
 	}
 	if claims, ok := token.Claims.(*CustomClaims); ok {
+		fmt.Printf("parse token GetUserID %v  and userid %s ", claims, claims.UserID)
 		return claims.UserID
 	}
 	return ""
@@ -105,6 +106,7 @@ func FilterFunc(ctx *context.Context) {
 		return
 	}
 	LoginUserId = GetUserID(token)
+	fmt.Printf("FilterFunc get userid %s", LoginUserId)
 
 	publiccontrollerlist := beego.AppConfig.String("controller::publicController")
 	publicactionlist := beego.AppConfig.String("action::publicAction")

@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"strings"
 
 	"github.com/astaxie/beego"
@@ -84,6 +85,7 @@ func (this *CartController) Cart_Add() {
 	intproductId := ab.ProductId
 	intnumber := ab.Number
 	intuserId := getLoginUserId()
+	fmt.Printf("getLoginUserId, userid is %d \n", intuserId)
 
 	o := orm.NewOrm()
 	goodstable := new(models.NideshopGoods)
@@ -134,7 +136,10 @@ func (this *CartController) Cart_Add() {
 			GoodsSpecifitionNameValue: strings.Join(vals, ";"),
 			GoodsSpecifitionIds:       product.GoodsSpecificationIds,
 			Checked:                   1}
-		o.Insert(&cartData)
+		_, err := o.Insert(&cartData)
+		if err != nil {
+			fmt.Printf("insert card %v get error %v", cartData, err)
+		}
 	} else {
 		if product.GoodsNumber < (intnumber + cart.Number) {
 			this.CustomAbort(400, "库存不足")

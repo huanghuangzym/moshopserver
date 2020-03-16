@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/httplib"
@@ -62,6 +63,8 @@ func Login(code string, fullUserInfo ResUserInfo) *WXUserInfo {
 
 	var res WXLoginResponse
 	req.ToJSON(&res)
+
+	fmt.Printf("get response %v  \n", res)
 
 	s := sha1.New()
 	s.Write([]byte(fullUserInfo.RawData + res.SessionKey))
